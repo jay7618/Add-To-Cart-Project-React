@@ -1,0 +1,194 @@
+/* Global Styles & Bootstrap Overrides */
+:root {
+  --sv-primary: #0B6E4F;
+  --sv-primary-light: #0D9B6F;
+  --sv-primary-dark: #084C37;
+  --sv-accent: #E8963E;
+  --sv-bg: #F7F4EF;
+  --sv-text: #1A1A1A;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--sv-bg);
+  color: var(--sv-text);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #EDE8E0; }
+::-webkit-scrollbar-thumb { background: var(--sv-primary); border-radius: 4px; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.anim-fade-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
+.anim-slide-down { animation: slideDown 0.4s ease-out forwards; }
+.anim-shake { animation: shake 0.3s ease-in-out; }
+
+/* Buttons */
+.btn-sv-primary {
+  background-color: var(--sv-primary);
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.3s ease;
+}
+.btn-sv-primary:hover {
+  background-color: var(--sv-primary-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(11,110,79,0.3);
+}
+
+/* Form Inputs */
+.form-control-sv {
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: all 0.25s ease;
+  background-color: white;
+}
+.form-control-sv:focus {
+  border-color: var(--sv-primary);
+  box-shadow: 0 0 0 3px rgba(11,110,79,0.15);
+  outline: none;
+}
+.input-error {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 3px rgba(220,53,69,0.1) !important;
+}
+
+/* Product Card */
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(11,110,79,0.12);
+}
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Pagination */
+.page-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: var(--sv-text);
+}
+.page-btn:hover:not(:disabled):not(.active) {
+  background: var(--sv-primary);
+  color: white;
+  border-color: var(--sv-primary);
+}
+.page-btn.active {
+  background: var(--sv-primary);
+  color: white;
+  border-color: var(--sv-primary);
+}
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Filter Chips */
+.filter-chip {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #dee2e6;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  color: var(--sv-text);
+}
+.filter-chip:hover { border-color: var(--sv-primary); color: var(--sv-primary); }
+.filter-chip.active { background: var(--sv-primary); color: white; border-color: var(--sv-primary); }
+
+/* Navbar Links */
+.nav-sv-link {
+  position: relative;
+  color: var(--sv-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-sv-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--sv-accent);
+  transition: width 0.3s ease;
+}
+.nav-sv-link:hover::after, .nav-sv-link.active::after { width: 100%; }
+.nav-sv-link:hover { color: var(--sv-primary); }
+
+/* Auth Page Backgrounds */
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0B6E4F 0%, #084C37 50%, #0D9B6F 100%);
+  padding: 2rem 1rem;
+}
+
+/* Toast */
+.toast-sv {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: slideDown 0.35s ease-out forwards;
+}
